@@ -2,7 +2,7 @@
 
 class AgregarRespuesta{
 
-    public $Isok;
-    public $Estacionamiento;
-    
+    public $IsOk;
+    public $Mensaje;
+
 }

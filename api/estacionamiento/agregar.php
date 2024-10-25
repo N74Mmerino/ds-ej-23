@@ -4,8 +4,6 @@ header('Content-Type: application/json');
 
 require_once 'modelosRespuestas/agregarRespuesta.php';
 require_once 'modelosRequest/agregarRequest.php';
-require_once '../../modelo/estacionamiento.php';
-
 
 //se obtiene el body
 $json = file_get_contents('php://input',true);
@@ -13,18 +11,27 @@ $json = file_get_contents('php://input',true);
 $req = json_decode($json);
 
 $resp= new AgregarRespuesta();
+$resp->IsOk=true;
 
-$e = new Estacionamiento();
-$e->Patente=$req->PatenteVehiculo;
-$e->TipoVehiculo=$req->TipoVehiculo;
-$e->Usuario=$req->UsuarioAlta;
+if($req->TipoVehiculo =='Auto'){
 
-$resp->Estacionamiento=$e;
-$resp->Isok=True;
+    $resp->Mensaje='Ok';
 
+}
+else if ($req->TipoVehiculo =='Moto'){
 
+    $resp->Mensaje='Ok';
 
+}
+else if($req->TipoVehiculo =='PickUp'){
 
+    $resp->Mensaje='Ok';
+}
+else{
+
+    $resp->Mensaje="Tipo vehículo no existe";
+
+}
 
 
 
